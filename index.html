@@ -13,8 +13,9 @@
     <link rel="preconnect" href="https://api.iconify.design" crossorigin>
     
     <link rel="preload" as="image" href="hero-bg-demolition-msr-engineering.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="logo-msr-engineering-msr.wepg" type="image/webp" fetchpriority="high">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <script defer src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
@@ -49,7 +50,6 @@
           "@id": "https://jasa-bobok-coring-bongkar-potong-beton-surabaya-jawatimur.vercel.app/#webpage",
           "url": "https://jasa-bobok-coring-bongkar-potong-beton-surabaya-jawatimur.vercel.app",
           "name": "Jasa Demolition & Coring Beton Surabaya Profesional | MSR Engineering",
-          "isPartOf": {"@id": "https://jasa-bobok-coring-bongkar-potong-beton-surabaya-jawatimur.vercel.app/#website"},
           "relatedLink": [
             "https://dongkrakusaha.com/jasa-bobok-beton-surabaya-murah/",
             "https://dongkrakusaha.com/kontraktor-demolition-pabrik-gresik/",
@@ -68,510 +68,225 @@
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         :root{
             --color-bg:#0F1115; --color-bg-elevated:#161A22; --color-bg-card:#1F242E; --color-surface:#2A313E;
-            --color-copper:#D97706; --color-copper-light:#F59E0B; --color-copper-bright:#FBBF24;
-            --color-terracotta:#DC2626; --color-gold:#EAB308; --color-gold-light:#FDE047;
-            --color-sage:#10B981; --color-cream:#F8FAFC; --color-text:#F1F5F9;
-            --color-text-muted:#94A3B8; --color-text-subtle:#64748B;
-            --font-display:'Playfair Display',Georgia,serif; --font-body:'Inter',system-ui,-apple-system,sans-serif;
-            --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
+            --color-copper:#D97706; --color-copper-light:#F59E0B; --color-terracotta:#DC2626; 
+            --color-cream:#F8FAFC; --color-text:#F1F5F9; --color-text-muted:#94A3B8;
+            --font-body:'Inter',system-ui,-apple-system,sans-serif;
         }
         html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
         body{font-family:var(--font-body);background:var(--color-bg);color:var(--color-text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
         a{color:inherit;text-decoration:none}
         img{max-width:100%;display:block;height:auto;}
-        button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
         
         .container{max-width:1320px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem)}
-        ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:var(--color-bg)} ::-webkit-scrollbar-thumb{background:var(--color-surface);border-radius:3px}
-        ::selection{background:var(--color-copper);color:var(--color-bg)}
-
-        /* FASE 1: PROTOKOL LAZY RENDERING UNTUK LCP MAKSIMAL */
+        
+        /* FASE 1: ZERO BLOAT OPTIMIZATION */
         .lazy-render { content-visibility: auto; contain-intrinsic-size: 1px 1000px; }
 
-        /* ============ NAVIGATION BAR ============ */
-        .nav{ position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 0;transition:all 0.4s; background:rgba(15,17,21,0.7); backdrop-filter:blur(12px); border-bottom:1px solid rgba(217,119,6,0.1); }
-        .nav.scrolled{ background:rgba(15,17,21,0.95); padding:0.75rem 0; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+        /* ============ NAV ============ */
+        .nav{ position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 0; background:rgba(15,17,21,0.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(217,119,6,0.1); }
         .nav-inner{ display:flex;align-items:center;justify-content:space-between; }
-        .nav-logo-img { height: 45px; width: auto; object-fit: contain; }
-        .nav-links{display:flex;gap:2rem;align-items:center}
-        .nav-link{ font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-muted);position:relative;transition:color 0.3s; font-weight:600; }
-        .nav-link:hover{color:var(--color-copper-bright)}
+        .nav-logo-img { height: 50px; width: auto; object-fit: contain; }
+        .nav-links{display:flex;gap:1.5rem;align-items:center}
+        .nav-link{ font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-muted);font-weight:700; }
+        .nav-cta{ padding:0.6rem 1.2rem;font-size:0.75rem;text-transform:uppercase;font-weight:800;border-radius:4px;color:#fff;background:var(--color-terracotta); }
+
+        /* ============ HERO ============ */
+        .hero{ position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden; }
+        .hero-bg-image{ position:absolute;inset:0;background:url('hero-bg-demolition-msr-engineering.webp') center/cover no-repeat;z-index:0; }
+        .hero-bg-overlay{ position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,21,0.8) 0%,rgba(15,17,21,0.95) 100%);z-index:1; }
+        .hero-content{ position:relative;z-index:2;max-width:900px; }
+        .hero-tag{ display:inline-flex;align-items:center;padding:0.5rem 1rem;border:1px solid var(--color-terracotta);font-size:0.7rem;text-transform:uppercase;color:#fff;margin-bottom:1.5rem;background:rgba(220,38,38,0.2);font-weight:700; }
+        .hero-title{ font-size:clamp(2rem,5vw,4.2rem);font-weight:800;line-height:1.1;color:var(--color-cream); }
+        .hero-title em{ font-style:normal;color:var(--color-copper-light); }
+        .hero-description{ margin-top:1.5rem;font-size:1.1rem;line-height:1.6;color:rgba(241,245,249,0.9); }
         
-        .nav-cta{ padding:0.65rem 1.6rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;color:#fff;background:linear-gradient(135deg,var(--color-terracotta),#B91C1C);box-shadow:0 4px 15px rgba(220,38,38,0.3); transition:all 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow:0 6px 20px rgba(220,38,38,0.5); }
+        .btn-wa-mutlak { display:inline-flex;align-items:center;gap:0.7rem;padding:1.2rem 2.2rem;background:var(--color-terracotta);color:#fff;font-size:0.9rem;text-transform:uppercase;font-weight:800;border-radius:4px;box-shadow:0 4px 15px rgba(220,38,38,0.4); margin-top:2.5rem; }
+
+        /* ============ SERVICES ============ */
+        .section{padding:80px 0;position:relative}
+        .section-label{ font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-copper-light);margin-bottom:0.5rem;font-weight:800;display:block; }
+        .section-title{ font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--color-cream);margin-bottom:2rem; }
         
-        .nav-toggle{display:none;flex-direction:column;gap:5px;padding:0.5rem;z-index:101;}
-        .nav-toggle span{width:22px;height:2px;background:var(--color-text);transition:all 0.3s}
-        .nav-mobile-overlay{ display:none;position:fixed;inset:0;z-index:99;background:rgba(15,17,21,0.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;transition:opacity 0.4s; }
-        .nav-mobile-overlay.active{display:flex;opacity:1}
+        .aeo-box { background:var(--color-bg-elevated); padding:1.5rem; border-left:4px solid var(--color-copper); margin-bottom:2.5rem; }
+        .services-grid{ display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem; }
+        .service-card{ background:var(--color-bg-elevated); border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); }
+        .service-card-img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+        .service-card-body { padding:1.5rem; }
+        .service-card h3{ font-size:1.2rem; font-weight:700; margin-bottom:0.75rem; color:var(--color-cream); }
+        .service-card p{ font-size:0.9rem; color:var(--color-text-muted); line-height:1.5; margin-bottom:1.5rem; }
+        .service-btn { display:block; text-align:center; padding:0.75rem; background:var(--color-surface); font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; }
 
-        /* ============ HERO SECTION ============ */
-        .hero{ position:relative;min-height:100vh;display:flex;align-items:center;padding-top:clamp(7rem,15vh,12rem);padding-bottom:clamp(4rem,8vh,6rem);overflow:hidden; }
-        .hero-bg-image{ position:absolute;inset:0;background:url('hero-bg-demolition-msr-engineering.webp') center/cover no-repeat;transform:scale(1);z-index:0; will-change: transform; }
-        .hero-bg-overlay{ position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,21,0.85) 0%,rgba(15,17,21,0.7) 40%,rgba(15,17,21,0.95) 100%);z-index:1; }
-        .hero-content{ position:relative;z-index:2;max-width:960px; }
-        .hero-tag{ display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;border:1px solid var(--color-terracotta);border-radius:4px;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem;background:rgba(220,38,38,0.2);font-weight:700; }
-        .hero-title{ font-family:var(--font-body);font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.01em;color:var(--color-cream); }
-        .hero-title em{ font-style:normal;background:linear-gradient(135deg,var(--color-copper-light),var(--color-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
-        .hero-description{ margin-top:1.5rem;font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.6;color:rgba(241,245,249,0.9);max-width:750px; }
-        .hero-actions{ display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap; }
+        /* ============ PORTFOLIO ============ */
+        .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-top:2rem; }
+        .portfolio-item { aspect-ratio:4/3; overflow:hidden; border-radius:4px; }
+        .portfolio-item img { width:100%; height:100%; object-fit:cover; transition:0.3s; }
+        .portfolio-item:hover img { transform:scale(1.1); }
+
+        /* ============ LOCATION ============ */
+        .location-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:3rem; align-items:center; }
+        .maps-link { display:block; border-radius:8px; overflow:hidden; border:2px solid var(--color-copper); }
+
+        /* ============ FOOTER ============ */
+        .tags-container { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+        .tag-item { font-size:0.75rem; background:var(--color-bg-elevated); padding:0.4rem 0.8rem; border-radius:4px; color:var(--color-text-muted); }
         
-        .btn-wa-mutlak { display:inline-flex;align-items:center;justify-content:center;gap:0.7rem;padding:1.2rem 2.5rem;border-radius:4px;cursor:pointer;text-decoration:none;background:linear-gradient(135deg,var(--color-terracotta),#B91C1C);color:#fff;font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:700;box-shadow:0 4px 20px rgba(220,38,38,0.4);transition:all 0.3s; }
-        .btn-wa-mutlak:hover { transform:translateY(-2px);box-shadow:0 8px 25px rgba(220,38,38,0.6); }
+        .footer{ padding:60px 0 100px; border-top:1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:3rem; }
         
-        .hero-stats{ display:flex;gap:4rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(241,245,249,0.1); }
-        .hero-stat-number{ font-family:var(--font-body);font-size:clamp(2rem,3vw,2.8rem);font-weight:800;color:var(--color-copper-light); }
-        .hero-stat-label{ font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-muted);margin-top:0.25rem; font-weight:600; }
+        /* FASE 4: STICKY MOBILE CRO */
+        .sticky-contact { position:fixed; bottom:0; left:0; right:0; background:rgba(22,26,34,0.95); padding:0.75rem 1rem; z-index:110; display:none; border-top:1px solid #10B981; }
+        .sticky-btn { display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#10B981; color:#fff; padding:0.85rem; border-radius:6px; font-weight:700; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
 
-        /* ============ GLOBAL SECTIONS ============ */
-        .section{padding:clamp(4rem,10vh,8rem) 0;position:relative}
-        .section-label{ display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-copper-light);margin-bottom:1rem;font-weight:700; }
-        .section-title{ font-family:var(--font-body);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.2;color:var(--color-cream); }
-        .gradient-hr{ border:none;height:1px;background:rgba(241,245,249,0.1);margin:0; }
-
-        /* ============ FASE 2: AEO DIRECT ANSWER BOX ============ */
-        .aeo-box { background:var(--color-bg-elevated); padding:2rem; border-left:4px solid var(--color-copper); margin-bottom:2.5rem; border-radius:0 8px 8px 0; }
-        .aeo-box h3 { font-size:1.1rem; color:var(--color-cream); margin-bottom:0.5rem; font-weight:700; }
-        .aeo-box p { font-size:0.95rem; line-height:1.6; color:var(--color-text-muted); margin-bottom:0; }
-
-        /* ============ PHILOSOPHY / ABOUT ============ */
-        .philosophy-grid{ display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center; }
-        .philosophy-image{ border-radius:8px;overflow:hidden;aspect-ratio:4/3; border: 1px solid rgba(241,245,249,0.1); }
-        .philosophy-image img{ width:100%;height:100%;object-fit:cover; }
-        .philosophy-quote{ font-size:1.25rem;line-height:1.5;color:var(--color-cream);margin:1.5rem 0;font-weight:600; }
-        .philosophy-quote span{ color:var(--color-copper-light); }
-        .philosophy-desc{ font-size:0.95rem;line-height:1.6;color:var(--color-text-muted); }
-        
-        /* ============ SERVICES (THE SILO HUB) ============ */
-        .services-header{ margin-bottom:3rem; }
-        .services-grid{ display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
-        .service-card{ display:flex; flex-direction:column; border-radius:8px; background:var(--color-bg-elevated); border: 1px solid rgba(241,245,249,0.05); overflow:hidden; transition:all 0.3s; }
-        .service-card:hover{ transform:translateY(-4px); border-color:rgba(217,119,6,0.3); box-shadow:0 10px 25px rgba(0,0,0,0.4); }
-        .service-card-img-wrapper { width:100%; aspect-ratio:4/3; overflow:hidden; background:#111; }
-        .service-card-img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-        .service-card:hover .service-card-img { transform:scale(1.05); }
-        .service-card-body { padding:1.5rem; display:flex; flex-direction:column; flex-grow:1; }
-        .service-card h3{ font-size:1.2rem; font-weight:700; color:var(--color-cream); margin-bottom:0.75rem; }
-        .service-card p{ font-size:0.875rem; line-height:1.5; color:var(--color-text-muted); margin-bottom:1.5rem; flex-grow:1; }
-        .service-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.75rem 1.2rem; background:var(--color-surface); color:#fff; font-size:0.8rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border-radius:4px; transition:all 0.2s; border:1px solid rgba(241,245,249,0.1); }
-        .service-btn:hover { background:var(--color-copper); border-color:var(--color-copper); }
-
-        /* ============ PORTFOLIO MASONRY GRID ============ */
-        .portfolio-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.5rem; }
-        .portfolio-item { position:relative; border-radius:6px; overflow:hidden; aspect-ratio:4/3; border:1px solid rgba(241,245,249,0.05); }
-        .portfolio-item img { width:100%; height:100%; object-fit:cover; transition:all 0.4s; }
-        .portfolio-item:hover img { transform:scale(1.06); }
-
-        /* ============ HEAD OFFICE & MAPS ============ */
-        .location-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:3rem; align-items:center; }
-        .maps-btn-link { display:block; border-radius:8px; overflow:hidden; border:1px solid rgba(217,119,6,0.3); box-shadow:0 10px 30px rgba(0,0,0,0.5); position:relative; }
-        .maps-btn-link img { width:100%; object-fit:cover; transition: transform 0.4s; }
-        .maps-btn-link:hover img { transform: scale(1.02); }
-        .maps-overlay-text { position:absolute; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:1.1rem; gap:0.5rem; opacity:0; transition:opacity 0.3s; }
-        .maps-btn-link:hover .maps-overlay-text { opacity:1; }
-        .location-info h4 { font-size:1.1rem; color:var(--color-cream); margin-bottom:0.75rem; font-weight:700; }
-        .location-info p { font-size:0.95rem; line-height:1.6; color:var(--color-text-muted); margin-bottom:1.5rem; }
-
-        /* ============ K3 PROTOCOL WORKFLOW ============ */
-        .process { background:var(--color-bg-elevated); }
-        .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
-        .process-card { background:var(--color-bg-card); padding:2rem 1.5rem; border-radius:6px; border:1px solid rgba(241,245,249,0.02); text-align:center; }
-        .process-icon { width:50px; height:50px; background:rgba(217,119,6,0.1); border:1px solid rgba(217,119,6,0.2); color:var(--color-copper-light); display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; border-radius:50%; font-size:1.25rem; font-weight:700; }
-        .process-card h4 { font-size:1.05rem; font-weight:700; color:var(--color-cream); margin-bottom:0.5rem; }
-        .process-card p { font-size:0.85rem; line-height:1.5; color:var(--color-text-muted); }
-
-        /* ============ FASE 3: VISIBLE LSI INJECTION (WHITE HAT MURNI) ============ */
-        .tags-section { background:var(--color-bg-elevated); padding:2.5rem 0; border-top:1px solid rgba(241,245,249,0.05); }
-        .tags-title { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-cream); margin-bottom:1rem; }
-        .tags-container { display:flex; flex-wrap:wrap; gap:0.75rem; }
-        .tag-item { font-size:0.8rem; background:var(--color-bg-card); color:var(--color-text-muted); padding:0.4rem 1rem; border-radius:4px; border:1px solid rgba(241,245,249,0.05); transition:all 0.2s; }
-        .tag-item:hover { color:var(--color-copper-bright); border-color:var(--color-copper); }
-
-        /* ============ FOOTER SECTION ============ */
-        .footer{ padding:4rem 0 7rem; background:var(--color-bg); border-top:1px solid rgba(241,245,249,0.05); }
-        .footer-grid{ display:grid; grid-template-columns:1.5fr 1fr 1.5fr; gap:4rem; margin-bottom:3rem; }
-        .footer-logo-img { height:45px; width:auto; margin-bottom:1rem; }
-        .footer-brand p{ font-size:0.85rem; line-height:1.6; color:var(--color-text-muted); }
-        .footer-column h4{ font-size:0.8rem; letter-spacing:0.1rem; text-transform:uppercase; color:var(--color-copper-light); margin-bottom:1.25rem; font-weight:700; }
-        .footer-column ul{ list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
-        .footer-column a{ font-size:0.875rem; color:var(--color-text-muted); transition:color 0.2s; }
-        .footer-column a:hover{ color:var(--color-cream); }
-        .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:2rem; border-top:1px solid rgba(241,245,249,0.05); flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:var(--color-text-subtle); }
-        .footer-bottom a { transition:color 0.2s; }
-        .footer-bottom a:hover { color:var(--color-text-muted); }
-
-        /* ============ FASE 4: STICKY MOBILE CONTACT (CRO PULSE) ============ */
-        .sticky-contact { position:fixed; bottom:0; left:0; right:0; background:rgba(22,26,34,0.95); backdrop-filter:blur(10px); padding:0.75rem 1rem; z-index:110; border-top:1px solid rgba(16,185,129,0.2); display:none; box-shadow:0 -5px 25px rgba(0,0,0,0.6); }
-        .sticky-btn { display:flex; align-items:center; justify-content:center; gap:0.6rem; background:#10B981; color:#fff; padding:0.85rem; border-radius:6px; font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; text-align:center; box-shadow:0 4px 15px rgba(16,185,129,0.4); animation: intense-pulse 2s infinite; }
-        
-        @keyframes intense-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); transform: scale(1); }
-            70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); transform: scale(1.02); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); transform: scale(1); }
-        }
-
-        /* ============ RESPONSIVE VIEWPORTS ============ */
-        @media(max-width:1024px){
-            .services-grid { grid-template-columns:repeat(2,1fr); }
-            .portfolio-grid { grid-template-columns:repeat(3,1fr); }
-            .process-steps { grid-template-columns:repeat(2,1fr); gap:1rem; }
-        }
         @media(max-width:768px){
-            .nav-links, .nav-cta {display:none} .nav-toggle{display:flex}
-            .philosophy-grid, .location-grid, .services-grid, .portfolio-grid, .footer-grid { grid-template-columns:1fr; gap:2rem; }
-            .hero{ padding-top:6rem; text-align:center; min-height:auto; }
-            .hero-description { margin:1rem auto 0; }
-            .hero-actions { justify-content:center; }
-            .hero-stats { flex-direction:column; gap:1.5rem; text-align:center; margin-top:2.5rem; padding-top:1.5rem; }
+            .nav-links, .nav-cta {display:none}
+            .hero{text-align:center; padding-top:100px;}
             .sticky-contact { display:block; }
-            .footer { padding-bottom:7rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav" id="nav">
+    <nav class="nav">
         <div class="container nav-inner">
             <a href="#">
-                <img src="logo-msr-engineering-msr.webp" alt="logo-pt-mitra-sentosa-rahardja-msr-engineering" class="nav-logo-img" width="400" height="150">
+                <img src="logo-msr-engineering-msr.wepg" alt="logo-msr-engineering" class="nav-logo-img">
             </a>
             <div class="nav-links">
-                <a href="#profil" class="nav-link">Profil</a>
-                <a href="#layanan" class="nav-link">Layanan pilar</a>
-                <a href="#portofolio" class="nav-link">Bukti nyata</a>
+                <a href="#layanan" class="nav-link">Layanan</a>
+                <a href="#portofolio" class="nav-link">Portofolio</a>
                 <a href="#lokasi" class="nav-link">Workshop</a>
             </div>
-            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering%20Surabaya,%20saya%20butuh%20konsultasi%20cepat%20mengenai%20proyek%20demolition/coring%20beton." class="nav-cta">Hubungi Kami Cepat</a>
-            
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
+            <a href="https://wa.me/628138111599" class="nav-cta">Konsultasi WA</a>
         </div>
     </nav>
 
-    <div class="nav-mobile-overlay" id="navMobile">
-        <a href="#profil" class="nav-link">Profil</a>
-        <a href="#layanan" class="nav-link">Layanan pilar</a>
-        <a href="#portofolio" class="nav-link">Bukti nyata</a>
-        <a href="#lokasi" class="nav-link">Workshop</a>
-        <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering%20Surabaya..." class="nav-cta" style="margin-top:1rem">Hubungi Kami Cepat</a>
-    </div>
-
-    <section class="hero" id="hero">
+    <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-bg-overlay"></div>
-        
         <div class="container hero-content">
-            <div class="hero-tag">
-                <span class="iconify" data-icon="solar:shield-check-bold" style="color:var(--color-gold-light)"></span>
-                Demolition Specialist & Coring Bersertifikasi K3 Jawa Timur
-            </div>
-            <h1 class="hero-title">Jasa Demolition & Coring Beton Surabaya Profesional: <br><em>Jangan Tunggu Sampai Proyek Mangkrak!</em></h1>
-            
+            <div class="hero-tag">Spesialis Demolition & Coring Jawa Timur</div>
+            <h1 class="hero-title">Jasa Demolition & Coring Beton Surabaya: <em>Eksekusi Cepat & Presisi!</em></h1>
             <p class="hero-description">
-                Eksekusi cepat, presisi tinggi, dan jaminan Zero Accident. Spesialis pembongkaran struktur baja, beton bertulang, dan coring MEP di seluruh wilayah Surabaya dan sekitarnya. Kami juga siap membeli limbah baja sisa bongkaran proyek Anda dengan HARGA TINGGI!
+                Solusi profesional pembongkaran struktur, potong beton, dan coring MEP tanpa mangkrak. Jaminan K3 dan Zero Accident untuk proyek industri maupun residensial.
             </p>
-            <div class="hero-actions">
-                <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering%20Surabaya,%20saya%20tertarik%20dengan%20layanan%20Anda.%20Mohon%20jadwalkan%20Survey%20%26%20Konsultasi%20Gratis." class="btn-wa-mutlak">
-                    <span class="iconify" data-icon="logos:whatsapp-icon" style="font-size:1.3rem"></span>
-                    <span>🔴 Survey &amp; Konsultasi Gratis Sekarang!</span>
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">15+</div>
-                    <div class="hero-stat-label">Tahun Pengalaman</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">450+</div>
-                    <div class="hero-stat-label">Proyek Selesai</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">100%</div>
-                    <div class="hero-stat-label">Zero Accident (K3)</div>
-                </div>
-            </div>
+            <a href="https://wa.me/628138111599" class="btn-wa-mutlak">🔴 Survey & Konsultasi Gratis Sekarang!</a>
         </div>
     </section>
 
     <div class="lazy-render">
-        
-        <section class="section" id="profil">
-            <div class="container">
-                <div class="philosophy-grid">
-                    <div class="philosophy-image">
-                        <img src="layanan-pembongkaran-general-beton.webp" loading="lazy" decoding="async" alt="profil-pembongkaran-beton-bertulang-msr-engineering">
-                    </div>
-                    <div class="philosophy-text">
-                        <div class="section-label">Profil Perusahaan</div>
-                        <h2 class="section-title">Dedikasi Pada Kualitas Konstruksi Berlisensi Resmi</h2>
-                        
-                        <p class="philosophy-quote">"Ketepatan waktu dan keselamatan kerja di lapangan bukan sekadar target, melainkan <span>hukum mutlak</span> di setiap area kerja kami."</p>
-                        
-                        <p class="philosophy-desc">
-                            PT. Mitra Sentosa Rahardja (MSR Engineering) hadir sebagai mitra strategis kontraktor utama di Surabaya untuk mengatasi keterlambatan pembongkaran struktur yang menguras budget. Kami menggunakan armada alat berat mandiri dan tim ahli berlisensi demi menjaga kelancaran proyek Anda.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="gradient-hr">
-
         <section class="section" id="layanan">
             <div class="container">
-                <div class="services-header">
-                    <div class="section-label">Etalase Kompetensi</div>
-                    <h2 class="section-title">Layanan Spesialis Kami <em>(Cepat, Aman &amp; Bersertifikat)</em></h2>
-                </div>
+                <span class="section-label">Pilar Layanan</span>
+                <h2 class="section-title">Layanan Spesialis MSR Engineering</h2>
                 
                 <div class="aeo-box">
-                    <h3>Berapa Biaya Jasa Demolition dan Coring Beton di Surabaya Jawa Timur?</h3>
-                    <p><strong>Jawaban Langsung:</strong> Biaya pembongkaran dan coring beton di wilayah Surabaya ditentukan oleh volume kubikasi, ketebalan beton mutu, dan kerumitan struktur lapangan. MSR Engineering memberikan estimasi harga transparan di awal, mulai dari ratusan ribu rupiah hingga tarif paket borongan komprehensif.</p>
+                    <h3>Berapa Biaya Jasa Demolition di Surabaya?</h3>
+                    <p>Biaya jasa demolition di Surabaya mulai dari ratusan ribu hingga jutaan rupiah tergantung volume kubikasi dan tingkat kesulitan struktur. MSR Engineering menjamin transparansi harga tanpa biaya tambahan di akhir proyek.</p>
                 </div>
 
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="layanan-pembongkaran-general-beton.webp" loading="lazy" decoding="async" alt="jasa-demolition-bongkar-beton-terpercaya">
-                        </div>
+                        <img src="layanan-pembongkaran-general-beton.webp" alt="pembongkaran-general" class="service-card-img" loading="lazy">
                         <div class="service-card-body">
                             <h3>Pembongkaran General</h3>
-                            <p>Jasa bongkar beton aman &amp; minim getaran. Solusi tepat untuk area padat tanpa merusak struktur utama bangunan Anda.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20saya%20ingin%20tanya%20harga%20layanan%20Pembongkaran%20General%20di%20Surabaya." class="service-btn">Tanya Harga</a>
+                            <p>Bongkar beton aman & minim getaran untuk area padat penduduk.</p>
+                            <a href="https://wa.me/628138111599" class="service-btn">Tanya Harga</a>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="demolition-pabrik-skala-industri.webp" loading="lazy" decoding="async" alt="kontraktor-demolition-pabrik-minim-getaran">
-                        </div>
+                        <img src="demolition-pabrik-skala-industri.webp" alt="demolition-pabrik" class="service-card-img" loading="lazy">
                         <div class="service-card-body">
-                            <h3>Demolition Pabrik &amp; Industri</h3>
-                            <p>Spesialis perobohan kawasan industri. Alat canggih kami memotong tanpa mengganggu operasional vital pabrik Anda.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20saya%20ingin%20tanya%20harga%20Demolition%20Pabrik%20%26%20Industri%20Surabaya." class="service-btn">Tanya Harga</a>
+                            <h3>Demolition Pabrik</h3>
+                            <p>Perobohan kawasan industri tanpa mengganggu operasional vital.</p>
+                            <a href="https://wa.me/628138111599" class="service-btn">Tanya Harga</a>
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="bongkar-baja-beli-limbah-tinggi.webp" loading="lazy" decoding="async" alt="vendor-bongkar-rangka-baja-beli-limbah">
-                        </div>
+                        <img src="coring-beton-presisi-mep.webp" alt="coring-beton" class="service-card-img" loading="lazy">
                         <div class="service-card-body">
-                            <h3>Spesialis Bongkar Baja &amp; Beli Limbah</h3>
-                            <p>Gudang baja tua mengganggu lahan? Kami bongkar cepat dan KAMI BELI baja bekas Anda dengan harga di atas standar pasaran!</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20saya%20ingin%20tanya%20harga%20Bongkar%20Baja%20dan%20Penjualan%20Limbah." class="service-btn">Tanya Harga</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="pembongkaran-struktur-zero-accident.webp" loading="lazy" decoding="async" alt="ahli-bongkar-struktur-pabrik-standar-k3">
-                        </div>
-                        <div class="service-card-body">
-                            <h3>Demolition Zero Accident (K3)</h3>
-                            <p>Hindari trauma tuntutan hukum. Pekerjaan perobohan berisiko tinggi kami kawal ketat dengan standar K3 berlisensi.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20saya%20tanya%20mengenai%20SOP%20Demolition%20Zero%20Accident%20K3." class="service-btn">Tanya Harga</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="perobohan-gedung-bertingkat-wire-saw.webp" loading="lazy" decoding="async" alt="spesialis-demolition-gedung-bertingkat-wire-saw">
-                        </div>
-                        <div class="service-card-body">
-                            <h3>Demolition Gedung Bertingkat</h3>
-                            <p>Eksekusi gedung di tengah kota? Wire Saw kami sanggup memotong beton rapi tanpa getaran ekstrem yang memicu protes warga sekitar.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20tanya%20biaya%20Demolition%20Gedung%20Bertingkat%20Surabaya." class="service-btn">Tanya Harga</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="coring-beton-presisi-mep.webp" loading="lazy" decoding="async" alt="tukang-coring-beton-mep-presisi-tinggi">
-                        </div>
-                        <div class="service-card-body">
-                            <h3>Coring Beton Presisi (MEP)</h3>
-                            <p>Jangan biarkan struktur utama melemah! Lubang jalur perpipaan &amp; listrik harus dikerjakan presisi. Ahlinya coring MEP siap meluncur.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20tanya%20biaya%20Coring%20Beton%20Presisi%20MEP%20Surabaya." class="service-btn">Tanya Harga</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card-img-wrapper">
-                            <img class="service-card-img" src="potong-beton-bongkar-pondasi.webp" loading="lazy" decoding="async" alt="biaya-potong-beton-pondasi-mesin-industri">
-                        </div>
-                        <div class="service-card-body">
-                            <h3>Potong Beton &amp; Pondasi Mesin</h3>
-                            <p>Beton mutu K-500 bikin vendor biasa angkat tangan? Floor Saw &amp; Wall Saw mutakhir kami siap babat habis pondasi mesin paling alot sekalipun.</p>
-                            <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering,%20tanya%20harga%20Potong%20Beton%20dan%20Bongkar%20Pondasi." class="service-btn">Tanya Harga</a>
+                            <h3>Coring Beton MEP</h3>
+                            <p>Pembuatan lubang jalur pipa dan kabel presisi tinggi.</p>
+                            <a href="https://wa.me/628138111599" class="service-btn">Tanya Harga</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr class="gradient-hr">
-
-        <section class="section" id="portofolio">
+        <section class="section" id="portofolio" style="background:var(--color-bg-elevated)">
             <div class="container">
-                <div class="services-header" style="text-align:center;">
-                    <div class="section-label" style="justify-content:center;">Dokumentasi Lapangan</div>
-                    <h2 class="section-title">Bukti Kerja Nyata <em>Proyek MSR Engineering</em></h2>
-                </div>
-                
+                <span class="section-label">Proyek Selesai</span>
+                <h2 class="section-title">Bukti Kerja Nyata</h2>
                 <div class="portfolio-grid">
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-01.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-01-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-02.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-02-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-03.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-03-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-04.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-04-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-05.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-05-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-06.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-06-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-07.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-07-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-08.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-08-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-09.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-09-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-10.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-10-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-11.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-11-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-12.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-12-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-13.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-13-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-14.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-14-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-15.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-15-msr-engineering"></div>
-                    <div class="portfolio-item"><img src="portofolio-msr-engineering-16.webp" loading="lazy" decoding="async" alt="proyek-demolition-coring-potong-beton-16-msr-engineering"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-01.webp" alt="proyek-01" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-02.webp" alt="proyek-02" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-03.webp" alt="proyek-03" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-04.webp" alt="proyek-04" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-05.webp" alt="proyek-05" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-06.webp" alt="proyek-06" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-07.webp" alt="proyek-07" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-08.webp" alt="proyek-08" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-09.webp" alt="proyek-09" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-10.webp" alt="proyek-10" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-11.webp" alt="proyek-11" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-12.webp" alt="proyek-12" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-13.webp" alt="proyek-13" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-14.webp" alt="proyek-14" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-15.webp" alt="proyek-15" loading="lazy"></div>
+                    <div class="portfolio-item"><img src="portofolio-msr-engineering-16.webp" alt="proyek-16" loading="lazy"></div>
                 </div>
             </div>
         </section>
-
-        <hr class="gradient-hr">
 
         <section class="section" id="lokasi">
             <div class="container">
                 <div class="location-grid">
-                    <div class="location-info">
-                        <div class="section-label">Hubungi Kami</div>
-                        <h2 class="section-title">Kunjungi Head Office Kami</h2>
-                        <p class="philosophy-desc" style="margin-top:1rem;">
-                            Kami selalu siap menyambut Anda untuk konsultasi teknis secara langsung sambil ngopi bareng. Koordinasikan blueprint struktur bangunan Anda demi keamanan pengerjaan eksekusi total.
-                        </p>
-                        <h4>Alamat Kantor Pusat MSR Engineering:</h4>
-                        <p>Jl. Praja III Jl. Sultan Iskandar Muda No.37, RT.5/RW.1, Kby. Lama Sel., Kec. Kebayoran Lama, Kota Jakarta Selatan, DKI Jakarta 12240</p>
-                    </div>
                     <div>
-                        <a href="https://maps.app.goo.gl/pJ3QRyKkwR7rnSCd6" class="maps-btn-link" target="_blank" rel="noopener">
-                            <img src="ilustrasi-peta-lokasi-msr-engineering.jpg" alt="peta-lokasi-jasa-bongkar-beton-baja-mits-engineering" width="600" height="450" loading="lazy" decoding="async">
-                            <div class="maps-overlay-text">
-                                <span class="iconify" data-icon="solar:map-arrow-square-bold"></span>
-                                Buka Peta Google Maps Interaktif
-                            </div>
+                        <span class="section-label">Head Office</span>
+                        <h2 class="section-title">Workshop MSR Engineering</h2>
+                        <p style="margin-bottom:1.5rem">Jl. Praja III No.37, Kebayoran Lama, Jakarta Selatan. Melayani operasional penuh untuk wilayah Surabaya & Jawa Timur.</p>
+                        <a href="https://maps.app.goo.gl/pJ3QRyKkwR7rnSCd6" target="_blank" class="maps-link">
+                            <img src="ilustrasi-peta-lokasi-msr-engineering.jpg" alt="peta-msr" loading="lazy">
                         </a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="process section">
-            <div class="container">
-                <div class="services-header" style="text-align:center;">
-                    <div class="section-label" style="justify-content:center;">SOP Eksekusi</div>
-                    <h2 class="section-title">Bagaimana Kami <em>Mengamankan Area Proyek</em></h2>
-                </div>
-                <div class="process-steps">
-                    <div class="process-card">
-                        <div class="process-icon">01</div>
-                        <h4>Analisis Blueprint</h4>
-                        <p>Pemetaan kekuatan beton eksisting serta deteksi presisi jalur pipa/listrik utilitas MEP.</p>
+                    <div style="background:var(--color-bg-elevated); padding:2rem; border-radius:8px;">
+                        <span class="section-label">Pencarian Terkait</span>
+                        <div class="tags-container">
+                            <span class="tag-item">Jasa bobok beton Surabaya</span>
+                            <span class="tag-item">Coring beton Sidoarjo</span>
+                            <span class="tag-item">Bongkar bangunan Gresik</span>
+                            <span class="tag-item">Potong beton Mojokerto</span>
+                            <span class="tag-item">Demolition gedung Surabaya</span>
+                        </div>
                     </div>
-                    <div class="process-card">
-                        <div class="process-icon">02</div>
-                        <h4>Isolasi Sektoral</h4>
-                        <p>Pemasangan pembatas K3 ketat untuk meminimalisir polusi serpihan dan debu konstruksi.</p>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">03</div>
-                        <h4>Cutting &amp; Coring</h4>
-                        <p>Operasional presisi tanpa getaran destruktif menggunakan mata pisau intan terbaik industri.</p>
-                    </div>
-                    <div class="process-card">
-                        <div class="process-icon">04</div>
-                        <h4>Logistik Pembersihan</h4>
-                        <p>Pengangkutan dan pembersihan sisa reruntuhan beton/baja secara tuntas tanpa sisa di lahan Anda.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="tags-section">
-            <div class="container">
-                <div class="tags-title">Pencarian Terkait (Tags) Wilayah Surabaya &amp; Sekitarnya:</div>
-                <div class="tags-container">
-                    <span class="tag-item">Jasa bobok beton Surabaya murah</span>
-                    <span class="tag-item">Tukang coring lantai bangunan Sidoarjo</span>
-                    <span class="tag-item">Kontraktor pembongkaran pabrik Gresik</span>
-                    <span class="tag-item">Biaya potong dinding beton rumah Surabaya</span>
-                    <span class="tag-item">Ahli concrete cutting jalan tol Jatim</span>
-                    <span class="tag-item">Tempat jual sisa rangka baja tua Surabaya</span>
-                    <span class="tag-item">Vendor wire saw gedung bertingkat Surabaya</span>
-                    <span class="tag-item">Sewa alat coring MEP Mojokerto</span>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <img src="logo-msr-engineering-msr.webp" alt="logo-pt-mitra-sentosa-rahardja-msr-engineering" class="footer-logo-img">
-                        <p>PT. Mitra Sentosa Rahardja (MSR Engineering) adalah perusahaan spesialis demolition berlisensi K3 nasional, fokus pada akurasi tinggi diamond concrete tools.</p>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Ekosistem Otoritas</h4>
-                        <ul>
-                            <li><a href="https://mitsengineering.com/" target="_blank" rel="noopener">mitsengineering.com</a></li>
-                            <li><a href="https://strukturbaja.id/" target="_blank" rel="noopener">strukturbaja.id</a></li>
-                            <li><a href="https://bajastruktur.com/" target="_blank" rel="noopener">bajastruktur.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Hotline Darurat</h4>
-                        <ul>
-                            <li><a href="tel:08138111599">Hotline 1: 0813-8111-599</a></li>
-                            <li><a href="tel:081213117488">Hotline 2: 0812-1311-7488</a></li>
-                            <li><a href="tel:087898400088">Hotline 3: 0878-9840-0088</a></li>
-                        </ul>
-                    </div>
+            <div class="container footer-grid">
+                <div>
+                    <img src="logo-msr-engineering-msr.wepg" alt="logo-footer" style="height:40px; margin-bottom:1rem">
+                    <p>MSR Engineering - Demolition Specialist | Coring & Concrete Cutting. Profesional, Presisi, Bergaransi.</p>
                 </div>
-                
-                <div class="footer-bottom">
-                    <p>&copy; 2026 PT. Mitra Sentosa Rahardja (MSR Engineering). All rights reserved.</p>
-                    <p class="uppercase tracking-widest">
-                        <a href="https://dongkrakusaha.com" rel="nofollow noopener noreferrer" target="_blank">SEO &amp; Web Development by CiledugPromo</a>
-                    </p>
+                <div>
+                    <h4 style="margin-bottom:1rem">Kontak Darurat</h4>
+                    <p>WA: 0813-8111-599</p>
+                    <p>WA: 0812-1311-7488</p>
                 </div>
+            </div>
+            <div class="container" style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center; font-size:0.8rem">
+                <p>&copy; 2026 MSR Engineering. SEO by <a href="https://dongkrakusaha.com">DongkrakUsaha</a></p>
             </div>
         </footer>
     </div>
 
     <div class="sticky-contact">
-        <a href="https://wa.me/628138111599?text=Halo%20MSR%20Engineering%20Surabaya,%20saya%20butuh%20penawaran%20harga%20cepat%20proyek%20demolition%20dan%20coring%20sekarang." class="sticky-btn" target="_blank">
-            <span class="iconify" data-icon="logos:whatsapp-icon" style="font-size:1.2rem"></span>
-            <span>🟢 WhatsApp Kami Sekarang (Klik Sini)</span>
+        <a href="https://wa.me/628138111599" class="sticky-btn">
+            <span>🟢 Chat WhatsApp Sekarang</span>
         </a>
     </div>
 
-    <script>
-        // Navigasi Mobile Interaction Control Logic
-        const navToggle = document.getElementById('navToggle');
-        const navMobile = document.getElementById('navMobile');
-        let mobileOpen = false;
-        
-        navToggle.addEventListener('click', () => {
-            mobileOpen = !mobileOpen;
-            navMobile.classList.toggle('active', mobileOpen);
-        });
-        navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            mobileOpen = false;
-            navMobile.classList.remove('active');
-        }));
-
-        // Navigation Header Background Shift Effect on Scroll
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        }, {passive: true});
-    </script>
 </body>
 </html>
